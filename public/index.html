@@ -16,6 +16,9 @@
     <script async type="text/javascript" src="WebGl.js"></script>
     <script type="text/javascript">
       Module = {};
+      Module.onRuntimeInitialized = function() {
+        location.reload();
+      };
     </script>
     <title>3D Renderer</title>
   </head>
