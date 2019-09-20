@@ -13,17 +13,72 @@
 
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
 
+    <style>
+      body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+          "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+          "Helvetica Neue", sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      code {
+        font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+          monospace;
+      }
+
+      body {
+        font-family: arial;
+        margin: 0;
+        padding: none;
+      }
+
+      .emscripten {
+        padding-right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+      }
+
+      div.emscripten {
+        text-align: center;
+        width: 100%;
+      }
+
+      canvas.emscripten {
+        border: 0px none;
+        width: 85%;
+      }
+    </style>
+
     <script async type="text/javascript" src="WebGl.js"></script>
-    <script type="text/javascript">
-      Module = {};
-      Module.onRuntimeInitialized = function() {
-        location.reload();
-      };
-    </script>
+
     <title>3D Renderer</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="loadingDiv">
+      <h1>Loading...</h1>
+    </div>
+    <canvas
+      class="emscripten"
+      id="canvas"
+      oncontextmenu="event.preventDefault()"
+      onclick="Module.requestFullScreen(true, false)"
+    ></canvas>
+    <script type="text/javascript">
+      var Module = {
+        onRuntimeInitialized: function() {
+          var e = document.getElementById("loadingDiv");
+          e.style.visibility = "hidden";
+        },
+        canvas: (function() {
+          var canvas = document.getElementById("canvas");
+          return canvas;
+        })()
+      };
+    </script>
     <div id="root"></div>
   </body>
 </html>

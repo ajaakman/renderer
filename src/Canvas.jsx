@@ -3,7 +3,10 @@ import { WebGL } from "./WebGL.ts";
 
 class Canvas extends Component {
   componentDidMount() {
-    WebGL.canvas = document.getElementById("canvas");
+    WebGL.canvas = (function() {
+      var canvas = document.getElementById("canvas");
+      return canvas;
+    })();
   }
 
   render() {
