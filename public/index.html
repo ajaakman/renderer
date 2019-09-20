@@ -14,17 +14,13 @@
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
 
     <script async type="text/javascript" src="WebGl.js"></script>
+    <script type="text/javascript">
+      Module = {};
+    </script>
     <title>3D Renderer</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-
-    <script type="text/javascript">
-      Module = {};
-      Module.onRuntimeInitialized = function() {
-        location.reload();
-      };
-    </script>
   </body>
 </html>
